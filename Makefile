@@ -7,8 +7,8 @@ DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
 
 all:
 	@echo "$(GREEN)Building and starting all containers: $(END)"
-	mkdir -p /home/$(USER)/data/wordpress
-	mkdir -p /home/$(USER)/data/mariadb
+	mkdir -p /home/nzhuzhle/data/wordpress
+	mkdir -p /home/nzhuzhle/data/mariadb
 	docker compose -f $(DOCKER_COMPOSE_FILE) up --detach --build
 
 down:
@@ -28,8 +28,8 @@ clean:
 	@if [ ! -z "$$(docker network ls -q --filter type=custom)" ]; then \
 		docker network rm $$(docker network ls -q --filter type=custom); \
 	fi
-	rm -rf /home/$(USER)/data/wordpress
-	rm -rf /home/$(USER)/data/mariadb
+	rm -rf /home/nzhuzhle/data/wordpress
+	rm -rf /home/nzhuzhle/data/mariadb
 	@echo "$(GREEN)Deleted all docker containers, volumes, networks, and images succesfully$(END)"
 
 re: clean all
