@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf #or to pool.d
+COPY www.conf /etc/php/${PHP_VERSION}/fpm/pool.d/ 
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
