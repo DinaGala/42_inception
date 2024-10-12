@@ -37,7 +37,7 @@ if [ ! -f "./wp-config.php" ]; then
         --allow-root
 
     # Install and activate a theme
-    wp theme install oceanwp --activate --allow-root
+   wp theme install oceanwp --activate --allow-root
 
     echo "WordPress installed successfully!"
 else

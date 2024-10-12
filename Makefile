@@ -9,7 +9,7 @@ all:
 	@echo "$(GREEN)Building and starting all containers: $(END)"
 	mkdir -p /home/nzhuzhle/data/wordpress
 	mkdir -p /home/nzhuzhle/data/mariadb
-	docker compose -f $(DOCKER_COMPOSE_FILE) up --detach --build
+	docker-compose -f $(DOCKER_COMPOSE_FILE) up --detach --build
 
 down:
 	docker compose -f $(DOCKER_COMPOSE_FILE) down -v
