@@ -16,7 +16,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY www.conf /etc/php/${PHP_VERSION}/fpm/pool.d/ 
+COPY ./conf/www.conf /etc/php/${PHP_VERSION}/fpm/pool.d/ 
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
@@ -25,7 +25,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN mkdir -p /run/php
 RUN chmod 755 /run/php
 
-COPY start.sh /usr/local/bin/start.sh
+COPY ./tools/start.sh /usr/local/bin/start.sh
 RUN chmod 755 /usr/local/bin/start.sh
 
 WORKDIR /var/www/html

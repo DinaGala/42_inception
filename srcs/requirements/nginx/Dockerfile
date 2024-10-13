@@ -4,8 +4,8 @@ RUN apt -y update && apt -y upgrade && \
     apt install -y nginx && \
     apt install -y openssl
 
-COPY ./nginx_start.sh /var/www/.
-COPY ./nginx.conf /etc/nginx/sites-enabled/default
+COPY ./tools/nginx_start.sh /var/www/.
+COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
 
 RUN chmod +x /var/www/nginx_start.sh
 
