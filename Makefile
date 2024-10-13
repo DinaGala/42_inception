@@ -5,6 +5,8 @@ END=\033[0m
 
 DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
 
+export $(shell sed 's/#.*//g' ./src/.env | xargs)
+
 all:
 	@echo "$(GREEN)Building and starting all containers: $(END)"
 	mkdir -p /home/nzhuzhle/data/wordpress

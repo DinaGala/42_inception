@@ -8,6 +8,8 @@ services:
     image: nginx
     build: requirements/nginx
     restart: always
+    env_file:
+      - .env
     ports:
       - "443:443"
     volumes:
@@ -27,7 +29,7 @@ services:
     env_file:
       - .env
     expose:
-      - "9000"
+      - "9000:9000"
     networks:
       - inception
 
@@ -41,7 +43,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     expose:
-      - "3306"
+      - "3306:3306"
     networks:
       - inception
 
