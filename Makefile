@@ -28,6 +28,7 @@ clean:
 	@if [ ! -z "$$(docker network ls -q --filter type=custom)" ]; then \
 		docker network rm $$(docker network ls -q --filter type=custom); \
 	fi
+	@sudo chown -R dina:dina /home/nzhuzhle/data/
 	rm -rf /home/nzhuzhle/data/wordpress
 	rm -rf /home/nzhuzhle/data/mariadb
 	@echo "$(GREEN)Deleted all docker containers, volumes, networks, and images succesfully$(END)"
