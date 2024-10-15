@@ -37,7 +37,7 @@ if [ ! -f "./wp-config.php" ]; then
         --allow-root
 
     # Install and activate a theme
-   wp theme install oceanwp --activate --allow-root
+   wp theme install twentytwentyfour --activate --allow-root
 
     echo "WordPress installed successfully!"
 else
@@ -46,4 +46,4 @@ fi
 
 # Run the PHP-FPM process
 echo "Starting PHP-FPM..."
-php-fpm
+/usr/sbin/php-fpm7.4 -F
