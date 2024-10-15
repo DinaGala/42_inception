@@ -1,5 +1,5 @@
 #!/bin/bash
-sleep 10
+sleep 5
 set -e  # Exit on error
 
 # Define the path to WordPress installation
