@@ -1,7 +1,7 @@
 #!/bin/bash
 #sleep 10
 
-if [ ! -f /etc/ssl/nzhuzhle.42.fr.crt ]; then
-	openssl req -newkey rsa:4096 -x509 -days 365 -nodes -out /etc/ssl/nzhuzhle.42.fr.crt -keyout /etc/ssl/nzhuzhle.42.fr.key -subj "/C=ES/ST=Barcelona/L=Barcelona/O=42 Barcelona/CN=nzhuzhle.42.fr";
+if [ ! -f ${SS_CERT} ]; then
+	openssl req -newkey rsa:4096 -x509 -days 365 -nodes -out ${SS_CERT} -keyout ${SS_KEY} -subj "/C=ES/ST=Barcelona/L=Barcelona/O=42 Barcelona/CN=${DOMAIN_NAME}";
 fi
 exec "$@"

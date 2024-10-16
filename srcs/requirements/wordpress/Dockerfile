@@ -1,12 +1,14 @@
 FROM debian:bullseye
 
 # Install PHP-FPM and required extensions
-RUN apt-get update && \
-    apt-get install -y \
+RUN apt update && \
+    apt install -y \
         php7.4 \
         php7.4-fpm \
         php7.4-mysqli \
         curl \
+        vim \
+        iputils-ping \
         mariadb-client \
     && rm -rf /var/lib/apt/lists/*
 
