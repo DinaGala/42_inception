@@ -37,7 +37,16 @@ if [ ! -f "./wp-config.php" ]; then
         --allow-root
 
     # Install and activate a theme
-   wp theme install twentytwentythree --activate --allow-root
+    wp theme install twentytwentythree --activate --allow-root
+    
+    # Install and configurate redis 
+	  wp config set WP_REDIS_HOST redis --allow-root
+  	wp config set WP_REDIS_PORT 6379 --raw --allow-root
+ 	  wp config set WP_REDIS_PREFIX "${DOMAIN_NAME}" --allow-root
+ 	  wp config set WP_REDIS_CLIENT phpredis --allow-root
+	  wp plugin install redis-cache --activate --allow-root
+    wp plugin update --all --allow-root
+	  wp redis enable --allow-root
 
     echo "WordPress installed successfully!"
 else

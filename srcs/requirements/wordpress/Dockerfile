@@ -9,6 +9,7 @@ RUN apt update && \
         curl \
         vim \
         iputils-ping \
+        php-redis \
         mariadb-client \
     && rm -rf /var/lib/apt/lists/*
 
