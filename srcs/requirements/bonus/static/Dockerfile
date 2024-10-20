@@ -4,6 +4,3 @@ FROM debian:bullseye
 COPY ./tools /var/www/html
 
 EXPOSE 8443
-
-# Start NGINX in the foreground
-CMD ["nginx", "-g", "daemon off;"]
