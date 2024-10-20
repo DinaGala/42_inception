@@ -1,10 +1,11 @@
 
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = 3000; // You can choose any port
+import express from 'express'; // Change this to import syntax
+import path from 'path';
 
-// Serve static files from the "static" directory
+const app = express();
+const port = 3000;
+
+// Serve static files from the "content" directory
 app.use(express.static(path.join(__dirname, '../content')));
 
 // Start the server
