@@ -11,6 +11,7 @@ all:
 	@echo "$(GREEN)Building and starting all containers: $(END)"
 	mkdir -p /home/nzhuzhle/data/wordpress
 	mkdir -p /home/nzhuzhle/data/mariadb
+	mkdir -p /home/nzhuzhle/data/static
 	docker-compose -f $(DOCKER_COMPOSE_FILE) build # --no-cache
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up --detach
 
@@ -35,6 +36,7 @@ clean:
 	@sudo chown -R dina:dina /home/nzhuzhle/data/
 	rm -rf /home/nzhuzhle/data/wordpress
 	rm -rf /home/nzhuzhle/data/mariadb
+	rm -rf /home/nzhuzhle/data/static
 	@echo "$(GREEN)Deleted all docker containers, volumes, networks, and images succesfully$(END)"
 
 re: clean all
