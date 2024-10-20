@@ -52,7 +52,7 @@ services:
     restart: always
     env_file: 
       - .env
-    expose:
+    ports:
       - "6379:6379"
     networks:
       - inception
@@ -66,7 +66,7 @@ services:
       - .env
     volumes:
       - wordpress_data:/var/www/html
-    expose:
+    ports:
       - "21:21"
       - "21100-21110:21100-21110"
     networks:
@@ -79,7 +79,7 @@ services:
     restart: always
     env_file: 
       - .env
-    expose:
+    ports:
       - "8080:8080"
     networks:
       - inception
@@ -110,11 +110,10 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    expose:
+    ports:
       - "6000:6000"
     networks:
       - inception
-
 
 volumes:
   wordpress_data:
@@ -128,13 +127,6 @@ volumes:
     driver: local
     driver_opts:
       device: "/home/nzhuzhle/data/mariadb"
-      o: bind
-      type: none
-
-  static_data:
-    driver: local
-    driver_opts:
-      device: "/home/nzhuzhle/data/static"
       o: bind
       type: none
 
