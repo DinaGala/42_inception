@@ -92,9 +92,9 @@ services:
     env_file: 
       - .env
     volumes:
-      - ./requirements/bonus/static/content:/var/www/
-    expose:
-      - "8443:443"
+      - ./requirements/bonus/static/content:/usr/share/nginx/html
+    ports:
+      - "8443:8443"
     networks:
       - inception
 
