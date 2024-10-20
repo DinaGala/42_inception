@@ -14,7 +14,7 @@ services:
       - "8443:8443"
     volumes:
       - wordpress_data:/var/www/html
-      - ./requirements/bonus/static/content:/usr/src/app/content  # Mount the static files
+      - ./requirements/bonus/static/content:/usr/src/app/static  # Mount the static files
     networks:
       - inception
 
