@@ -2,16 +2,15 @@ FROM debian:bullseye
 
 RUN apt -y update && apt -y upgrade && apt install -y nginx && apt install -y openssl
 
-RUN mkdir -p /var/www 
-RUN chmod +x /var/www/
-COPY ./tools/nginx_start.sh /var/www/
+RUN mkdir -p /usr/share/nginx/html
+RUN chmod +x /usr/share/nginx/html
+
+COPY ./tools/nginx_start.sh /usr/local/bin/
 COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
-COPY ./content /var/www/html/content
+COPY ./content /usr/share/nginx/html
+RUN chmod +x /usr/local/bin/nginx_start.sh
 
-RUN chmod +x /var/www/nginx_start.sh
+EXPOSE 8443
 
-EXPOSE 443
-
-ENTRYPOINT [ "/var/www/nginx_start.sh" ]
-
+ENTRYPOINT [ "/usr/local/bin/nginx_start.sh" ]
 CMD ["nginx", "-g", "daemon off;"]
