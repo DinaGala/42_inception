@@ -60,7 +60,7 @@ services:
   ftp:
     container_name: ftp
     image: ftp
-    build: ./requirements/bonus/fp
+    build: ./requirements/bonus/ftp
     restart: always
     env_file: 
       - .env
