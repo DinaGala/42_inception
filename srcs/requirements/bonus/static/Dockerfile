@@ -1,25 +1,17 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y \
-    curl \
-    gnupg \
-    && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt -y update && apt -y upgrade && apt install -y nginx && apt install -y openssl
 
-WORKDIR /usr/src/app
+RUN mkdir -p /var/www 
+RUN chmod +x /var/www/
+COPY ./tools/nginx_start.sh /var/www/
+COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
+COPY ./content /var/www/html/content
 
-# Copy package.json to the working directory
-COPY ./conf/package.json ./
+RUN chmod +x /var/www/nginx_start.sh
 
-# Install dependencies
-RUN npm install
+EXPOSE 443
 
-# Copy the server file and HTML content to the container
-COPY ./tools/server.js ./tools/
-COPY ./content ./content/
+ENTRYPOINT [ "/var/www/nginx_start.sh" ]
 
-EXPOSE 3000
-
-CMD ["node", "./tools/server.js"]
+CMD ["nginx", "-g", "daemon off;"]

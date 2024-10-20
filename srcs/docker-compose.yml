@@ -2,7 +2,6 @@ services:
   nginx:
     depends_on:
       - wordpress
-      - static
     container_name: nginx
     image: nginx
     build: ./requirements/nginx
@@ -11,10 +10,8 @@ services:
       - .env
     ports:
       - "443:443"
-      - "8443:8443"
     volumes:
       - wordpress_data:/var/www/html
-      - ./requirements/bonus/static/content:/usr/src/app/static  # Mount the static files
     networks:
       - inception
 
@@ -95,7 +92,7 @@ services:
     env_file: 
       - .env
     expose:
-      - "3000:3000"
+      - "8443:8443"
     networks:
       - inception
 
