@@ -16,7 +16,6 @@ COPY ./conf/package.json ./
 # Install dependencies
 RUN npm install
 
-
 # Copy the server file and HTML content to the container
 COPY ./tools/server.js ./tools/
 COPY ./content ./content/
