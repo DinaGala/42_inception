@@ -2,6 +2,7 @@ services:
   nginx:
     depends_on:
       - wordpress
+      - static
     container_name: nginx
     image: nginx
     build: ./requirements/nginx
@@ -13,7 +14,7 @@ services:
       - "8443:8443"
     volumes:
       - wordpress_data:/var/www/html
-      - static_data:/var/www/static
+      - ./requirements/bonus/static/content:/usr/src/app/static  # Mount the static files
     networks:
       - inception
 
@@ -90,10 +91,11 @@ services:
     container_name: static
     image: static
     build: ./requirements/bonus/static
-    volumes:
-      - static_data:/var/www/static
+    restart: always
     env_file: 
       - .env
+    expose:
+      - "3000:3000"
     networks:
       - inception
 
