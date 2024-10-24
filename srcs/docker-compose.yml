@@ -79,7 +79,7 @@ services:
     restart: always
     env_file: 
       - .env
-    ports:
+    expose:
       - "8080:8080"
     networks:
       - inception
@@ -110,7 +110,7 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    ports:
+    expose:
       - "6000:6000"
     networks:
       - inception
